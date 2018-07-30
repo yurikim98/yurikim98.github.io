@@ -3,23 +3,16 @@ self.addEventListener('install', function(e) {
         caches.open('ver1')
         .then(cache => {
             return cache.addAll([
-                '/sw-test/',
-                '/sw-test/index.html',
-                '/sw-test/css/style.css',
-                '/sw-test/js/main.js',
-                '/sw-test/nature.jpg'
+                '/',
+                '/index.html',
+                '/css/main.min.css',
+                '/js/bundle.min.js',
+                '/images/car.png',
+                '/images/street-bg.jpg',
+                '/images/street.jpg',
+                '/images/taxi_PNG13.png'
             ]);
         })
         .catch(err => console.error(err))
-    );
-
-});
-self.addEventListener('fetch', function(event) {
-    console.log(event.request.url);
-
-    event.respondWith(
-        caches.match(event.request).then(function(response) {
-            return response || fetch(event.request);
-        })
     );
 });
